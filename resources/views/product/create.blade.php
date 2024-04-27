@@ -24,23 +24,62 @@
             <div class="col-12">
                 <!-- Small boxes (Stat box) -->
                 <div class="row">
-                    <form action="{{ route('product.store') }}" method="post">
+                    <form action="{{ route('product.store') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
-                            <input type="text" name="title" class="form-control" placeholder="title">
+                            <input type="text" value="{{ old('title') }}" name="title" class="form-control" placeholder="title">
                         </div>
                         <div class="form-group">
-                            <input type="text" name="description" class="form-control" placeholder="description">
+                            <input type="text" value="{{ old('description') }}" name="description" class="form-control" placeholder="description">
                         </div>
                         <div class="form-group">
-                            <textarea name="content" class="form-control" cols="30" rows="10" placeholder="content"></textarea>
+                            <textarea name="content" class="form-control" cols="30" rows="10" placeholder="content">{{ old('content') }}</textarea>
                         </div>
                         <div class="form-group">
-                            <input type="text" name="price" class="form-control" placeholder="price">
+                            <input type="text" value="{{ old('price') }}" name="price" class="form-control" placeholder="price">
                         </div>
                         <div class="form-group">
-                            <input type="text" name="count" class="form-control" placeholder="count">
+                            <input type="text" value="{{ old('count') }}" name="count" class="form-control" placeholder="count">
                         </div>
+
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="custom-file">
+                                    <input name="preview_image" type="file" class="custom-file-input" id="exampleInputFile">
+                                    <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                                </div>
+                                <div class="input-group-append">
+                                    <span class="input-group-text">Upload</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <select name="category_id" class="tags" style="width: 100%;">
+                                <option disabled selected>Select category</option>
+                                @foreach($categories as $category) {
+                                    <option value={{ $category->id }}>{{ $category->title }}</option>
+                                }
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <select name="tags[]" class="tags" multiple="multiple" data-placeholder="Select a tag" style="width: 100%;">
+                                @foreach($tags as $tag) {
+                                    <option value={{ $tag->id }}>{{ $tag->title }}</option>
+                                }
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <select name="colors[]" class="colors" multiple="multiple" data-placeholder="Select a color" style="width: 100%;">
+                                @foreach($colors as $color) {
+                                    <option value={{ $color->id }}>{{ $color->title }}</option>
+                                }
+                                @endforeach
+                            </select>
+                        </div>
+
                         <div class="form-group">
                             <input type="submit" class="btn btn-primary" value="Add">
                         </div>

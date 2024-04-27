@@ -35,13 +35,47 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Title</th>
+                                    <th>Description</th>
+                                    <th>Content</th>
+                                    <th>Preview_image</th>
+                                    <th>Price</th>
+                                    <th>Count</th>
+                                    <th>Is_published</th>
+                                    <th>Category</th>
+                                    <th>Tags</th>
+                                    <th>Colors</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($products as $product)
                                     <tr>
-                                        <td>{{ $roduct->id }}</td>
+                                        <td>{{ $product->id }}</td>
                                         <td><a href="{{ route("product.show", $product->id) }}">{{ $product->title }}</a></td>
+                                        <td>{{ $product->description }}</td>
+                                        <td>{{ $product->content }}</td>
+                                        <td>{{ $product->preview_image }}
+{{--                                        <img src="{{ $product->preview_image }}">--}}
+{{--                                        <img src="{{ asset('storage/app/public/images/kbRs33YXRG76j3MeVMey6fTTwiCtZ1v9wHasVK2W.jpg') }}")>--}}
+{{--                                        <img src="../../../storage/app/public/images/kbRs33YXRG76j3MeVMey6fTTwiCtZ1v9wHasVK2W.jpg">--}}
+                                        <img src={{ Storage::url('app/public/images/kbRs33YXRG76j3MeVMey6fTTwiCtZ1v9wHasVK2W.jpg') }}>
+
+                                        </td>
+                                        <td>{{ $product->price }}</td>
+                                        <td>{{ $product->count }}</td>
+                                        <td>{{ $product->is_published }}</td>
+                                        <td>{{ $product->category->title }}</td>
+                                        <td>
+                                            @foreach($product->tags as $tag)
+                                                <span>
+                                                    {{ $tag->title }}
+                                                </span>
+                                            @endforeach
+                                        </td>
+                                        <td>
+                                            @foreach($product->colors as $color)
+                                                <div style="display: inline-block; width: 16px; height: 16px; background: {{ '#'.$color->title }}"></div>
+                                            @endforeach
+                                        </td>
                                     </tr>
                                 @endforeach
                                 </tbody>
@@ -57,4 +91,6 @@
     </section>
     <!-- /.content -->
 @endsection
+
+{{--https://ru.stackoverflow.com/questions/868951/laravel-%D0%BE%D1%82%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5-%D0%BA%D0%B0%D1%80%D1%82%D0%B8%D0%BD%D0%BE%D0%BA-%D0%B8%D0%B7-public-storage--}}
 
