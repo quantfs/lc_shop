@@ -42,6 +42,7 @@
                                     <th>Count</th>
                                     <th>Is_published</th>
                                     <th>Category</th>
+                                    <th>Group</th>
                                     <th>Tags</th>
                                     <th>Colors</th>
                                 </tr>
@@ -64,6 +65,7 @@
                                         <td>{{ $product->count }}</td>
                                         <td>{{ $product->is_published }}</td>
                                         <td>{{ $product->category->title }}</td>
+                                        <td>{{ $product->group->title }}</td>
                                         <td>
                                             @foreach($product->tags as $tag)
                                                 <span>

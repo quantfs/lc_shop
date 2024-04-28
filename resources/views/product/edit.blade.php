@@ -28,13 +28,13 @@
                         @csrf
                         @method('patch')
                         <div class="form-group">
-                            <input type="text" name="Title" value="{{ $product->title }}" class="form-control" placeholder="title">
+                            <input type="text" name="title" value="{{ $product->title }}" class="form-control" placeholder="title">
                         </div>
                         <div class="form-group">
-                            <input type="text" name="Description" value="{{ $product->description }}" class="form-control" placeholder="description">
+                            <input type="text" name="description" value="{{ $product->description }}" class="form-control" placeholder="description">
                         </div>
                         <div class="form-group">
-                            <input type="text" name="Content" value="{{ $product->content }}" class="form-control" placeholder="content">
+                            <input type="text" name="content" value="{{ $product->content }}" class="form-control" placeholder="content">
                         </div>
                         <div class="form-group">
                             <div class="input-group">
@@ -48,14 +48,15 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <input type="text" name="Price" value="{{ $product->price }}" class="form-control" placeholder="price">
+                            <input type="text" name="price" value="{{ $product->price }}" class="form-control" placeholder="price">
                         </div>
                         <div class="form-group">
-                            <input type="text" name="Count" value="{{ $product->count }}" class="form-control" placeholder="count">
+                            <input type="text" name="count" value="{{ $product->count }}" class="form-control" placeholder="count">
                         </div>
                         <div class="form-group">
-                            <input type="text" name="Is_published" value="{{ $product->is_published }}" class="form-control" placeholder="is_published">
+                            <input type="text" name="is_published" value="{{ $product->is_published }}" class="form-control" placeholder="is_published">
                         </div>
+
                         <div class="form-group">
                             <select name="category_id" class="tags" style="width: 100%;">
                                 @foreach($categories as $category){
@@ -64,6 +65,15 @@
                                 @endforeach
                             </select>
                         </div>
+                        <div class="form-group">
+                            <select name="group_id" class="tags" style="width: 100%;">
+                                @foreach($groups as $group){
+                                <option {{ $group->id == $product->group_id ? 'selected' : '' }} value={{ $group->id }}>{{ $group->title }}</option>
+                                }
+                                @endforeach
+                            </select>
+                        </div>
+
                         <div class="form-group">
                             <select name="tags[]" class="tags" multiple="multiple" data-placeholder="Select a tag" style="width: 100%;">
                                 @foreach($tags as $tag) {
@@ -76,7 +86,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <select name="tags[]" class="tags" multiple="multiple" data-placeholder="Select a tag" style="width: 100%;">
+                            <select name="colors[]" class="tags" multiple="multiple" data-placeholder="Select a tag" style="width: 100%;">
                                 @foreach($colors as $color) {
                                     @foreach($product->colors as $productColors) {
                                         <option {{ $color->id == $productColors->id ? 'selected' : '' }} value={{ $color->id }}>{{ $color->title }}</option>

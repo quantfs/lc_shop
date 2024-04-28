@@ -13,7 +13,11 @@ class Product extends Model
 
     public function category() {
         //return $this->belongsTo(Category::class, 'category_id', 'id');
-        return $this->belongsTo(Category::class,); // с конвенцией laravel
+        return $this->belongsTo(Category::class); // с конвенцией laravel
+    }
+
+    public function group() {
+        return $this->belongsTo(Group::class); // с конвенцией laravel
     }
 
     public function tags() {

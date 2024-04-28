@@ -46,6 +46,56 @@
                                         <td>Title</td>
                                         <td>{{ $product->title }}</td>
                                     </tr>
+                                    <tr>
+                                        <td>Description</td>
+                                        <td>{{ $product->description }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Content</td>
+                                        <td>{{ $product->content }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Preview_image</td>
+                                        <td>{{ $product->preview_image }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Price</td>
+                                        <td>{{ $product->price }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Count</td>
+                                        <td>{{ $product->count }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Is_published</td>
+                                        <td>{{ $product->is_published }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Category</td>
+                                        <td>{{ $product->category->title }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Group</td>
+                                        <td>{{ $product->group->title }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tags</td>
+                                        <td>
+                                            @foreach($product->tags as $tag)
+                                                <div>{{ $tag->title }}</div>
+                                            @endforeach
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Colors</td>
+                                        <td>
+                                            @foreach($product->colors as $color)
+                                                <div style="display: inline-block; width: 16px; height: 16px; background: {{ '#'.$color->title }}"></div>
+                                            @endforeach
+
+                                        </td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>

@@ -64,6 +64,16 @@
                             </select>
                         </div>
                         <div class="form-group">
+                            <select name="group_id" class="tags" style="width: 100%;">
+                                <option disabled selected>Select group</option>
+                                @foreach($groups as $group) {
+                                <option value={{ $group->id }}>{{ $group->title }}</option>
+                                }
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="form-group">
                             <select name="tags[]" class="tags" multiple="multiple" data-placeholder="Select a tag" style="width: 100%;">
                                 @foreach($tags as $tag) {
                                     <option value={{ $tag->id }}>{{ $tag->title }}</option>
