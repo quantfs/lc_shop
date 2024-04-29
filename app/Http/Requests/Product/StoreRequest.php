@@ -32,6 +32,7 @@ class StoreRequest extends FormRequest
             'group_id' => 'required|string',
             'tags' => 'nullable|array',
             'colors' => 'nullable|array',
+            'product_images' => 'nullable|array',
         ];
     }
 }

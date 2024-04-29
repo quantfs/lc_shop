@@ -37,6 +37,10 @@ class Product extends Model
     public function getImageUrlAttribute() {
         return url('storage/'.$this->preview_image);
     }
+
+    public function productImages() {
+        return $this->hasMany(ProductImage::class, 'product_id', 'id');
+    }
 }
 
 
